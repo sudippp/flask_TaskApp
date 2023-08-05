@@ -1,0 +1,39 @@
+https://flask.palletsprojects.com/en/2.3.x/quickstart/#a-minimal-application
+
+unning on http://127.0.0.1:5000 (Press CTRL+C to quit)
+============================================================================
+https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/
+
+DataBase [pip install Flask-SQLAlchemy]
+Flask-SQLAlchemy is an extension for Flask that adds support for SQLAlchemy to your application. It simplifies using SQLAlchemy with Flask by setting up common objects and patterns for using those objects, such as a session tied to each web request, models, and engines.
+[from flask_sqlalchemy import SQLAlchemy]
+To create DB :
+- python (open python shell)
+- [from app import db]
+- [db.create_all()]
+
+class Task(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    task = db.Column(db.String(255), unique=False, nullable=True)
+    importance = db.Column(db.String(255), unique=False, nullable=True)
+    uuid = db.Column(db.String(255), unique=True, nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.now())
+============================================================================
+UUID1 - It generates the unique number using the MAC address and current time component.
+UUID4 - It uses pseudo-random number generators to generate UUIDs, and such types UUIDs are good to use for the safety purpose.
+UUID3 and UUID5 - It uses cryptographic hashing and application-provided text strings to generate UUID.
+============================================================================
+@app.route("/", methods=['GET', 'POST'])
+def index():
+@app.route("/updateTask/<uid>/", methods=['GET', 'POST'])
+def updateTask(uid):
+
+if request.method == 'POST':
+	task = request.form['task']
+============================================================================
+db.session.add((getTask))
+db.session.commit()
+
+db.session.delete(getTask)
+db.session.commit()
+============================================================================
